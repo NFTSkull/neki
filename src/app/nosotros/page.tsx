@@ -34,7 +34,7 @@ export default function NosotrosPage() {
                 generación en generación.
               </p>
               <p className="font-lato text-lg text-gray-600 leading-relaxed">
-                El nombre "Neki Kua" proviene del náhuatl, significando "sabores que conectan", 
+                El nombre &ldquo;Neki Kua&rdquo; proviene del náhuatl, significando &ldquo;sabores que conectan&rdquo;, 
                 reflejando nuestra filosofía de unir tradición y modernidad.
               </p>
             </div>

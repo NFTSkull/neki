@@ -49,7 +49,7 @@ export default function Home() {
       <section className="py-16 bg-verde-oscuro">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <blockquote className="font-libre text-2xl md:text-3xl text-crema leading-relaxed">
-            "Pensar en sabores es pensar en la historia que existe detrás de ellos."
+            &ldquo;Pensar en sabores es pensar en la historia que existe detrás de ellos.&rdquo;
           </blockquote>
           <p className="font-playfair text-lg text-dorado mt-4">
             — Neki Kua
