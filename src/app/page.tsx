@@ -4,9 +4,40 @@ import Hero from '@/components/Hero';
 import CategoriaSection from '@/components/CategoriaSection';
 import ProductoCard from '@/components/ProductoCard';
 import Newsletter from '@/components/Newsletter';
-import { productosDestacados } from '@/data/productos';
+import { products } from '@/data/products';
+
+// Función para generar un ID único basado en el nombre
+const generateId = (name: string) => {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+};
+
+// Seleccionar productos destacados de diferentes categorías
+const getFeaturedProducts = () => {
+  const featured: typeof products = [];
+  
+  // Seleccionar productos representativos de cada categoría principal
+  const categoriesToFeature = ["Moles", "Café y Chocolates", "Carnes y Quesos", "Tlayudas", "Mermeladas & Mieles", "Chiles & Especias"];
+  
+  categoriesToFeature.forEach(category => {
+    const categoryProducts = products.filter(p => p.category === category);
+    if (categoryProducts.length > 0) {
+      // Tomar el primer producto de cada categoría (o el más representativo)
+      featured.push(categoryProducts[0]);
+    }
+  });
+  
+  // Limitar a 6 productos destacados
+  return featured.slice(0, 6);
+};
 
 export default function Home() {
+  const productosDestacados = getFeaturedProducts();
+
   return (
     <div className="min-h-screen bg-crema">
       <Navbar />
@@ -32,13 +63,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {productosDestacados.map((producto) => (
               <ProductoCard
-                key={producto.id}
-                id={producto.id}
-                nombre={producto.nombre}
-                precio={producto.precio}
-                imagen={producto.imagen}
-                descripcion={producto.descripcion}
-                categoria={producto.categoria}
+                key={generateId(producto.name)}
+                id={generateId(producto.name)}
+                nombre={producto.name}
+                precio={producto.price}
+                categoria={producto.category}
               />
             ))}
           </div>
