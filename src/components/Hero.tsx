@@ -14,8 +14,9 @@ export default function Hero() {
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
-        {/* Overlay oscuro para legibilidad del texto */}
-        <div className="absolute inset-0 bg-gradient-to-br from-verde-oscuro/85 via-verde-oscuro/80 to-verde-oscuro/85"></div>
+        {/* Overlay oscuro múltiple para máxima legibilidad */}
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-verde-oscuro/95 via-verde-oscuro/92 to-verde-oscuro/95"></div>
       </div>
       
       {/* Líneas decorativas */}
@@ -25,22 +26,22 @@ export default function Hero() {
       {/* Contenido */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         {/* Subtítulo elegante */}
-        <p className="font-lato text-sm md:text-base text-dorado/90 uppercase tracking-[0.2em] mb-6 font-medium">
+        <p className="font-lato text-sm md:text-base text-dorado uppercase tracking-[0.2em] mb-6 font-medium drop-shadow-lg">
           Tradición Artesanal Mexicana
         </p>
         
         {/* Texto principal - Tipografía más auténtica */}
-        <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-crema mb-6 leading-[1.1] tracking-tight">
+        <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-crema mb-6 leading-[1.1] tracking-tight drop-shadow-2xl">
           Sabores con{' '}
-          <span className="text-dorado italic">historia</span>
+          <span className="text-dorado italic drop-shadow-2xl">historia</span>
         </h1>
         
-        <p className="font-libre text-2xl md:text-3xl lg:text-4xl text-crema/95 mb-8 max-w-3xl mx-auto leading-relaxed font-normal">
+        <p className="font-libre text-2xl md:text-3xl lg:text-4xl text-crema mb-8 max-w-3xl mx-auto leading-relaxed font-normal drop-shadow-xl">
           Productos con alma mexicana
         </p>
         
         {/* Descripción mejorada */}
-        <p className="font-lato text-base md:text-lg lg:text-xl text-crema/85 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+        <p className="font-lato text-base md:text-lg lg:text-xl text-crema/95 mb-12 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
           Descubre la tradición artesanal que conecta generaciones. 
           Moles, dulces, bebidas y utensilios de cocina que cuentan 
           la historia de México en cada sabor.
