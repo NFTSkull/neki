@@ -3,8 +3,8 @@ export const categories = [
   "Carnes y Quesos",
   "Moles",
   "Café y Chocolates",
-  "Mermeladas y Mieles",
-  "Chiles y Especias",
+  "Mermeladas & Mieles",
+  "Chiles & Especias",
   "Dulces Tradicionales",
   "Otros",
   "Paquetes"
@@ -51,25 +51,25 @@ export const products = [
   { name: "Barra Guelaguetza 600 g", price: 135, category: "Café y Chocolates" },
 
   // --------------------------
-  // 🟨 MERMELADAS Y MIELES
+  // 🟨 MERMELADAS & MIELES
   // --------------------------
-  { name: "Mermelada de guayaba", price: 70, category: "Mermeladas y Mieles" },
-  { name: "Mermelada de fresa", price: 70, category: "Mermeladas y Mieles" },
-  { name: "Mermelada de piña", price: 70, category: "Mermeladas y Mieles" },
-  { name: "Mermelada de durazno", price: 70, category: "Mermeladas y Mieles" },
-  { name: "Mermelada de mango", price: 70, category: "Mermeladas y Mieles" },
-  { name: "Miel unicornio", price: 120, category: "Mermeladas y Mieles" },
-  { name: "Miel acahual", price: 140, category: "Mermeladas y Mieles" },
+  { name: "Mermelada de guayaba", price: 70, category: "Mermeladas & Mieles" },
+  { name: "Mermelada de fresa", price: 70, category: "Mermeladas & Mieles" },
+  { name: "Mermelada de piña", price: 70, category: "Mermeladas & Mieles" },
+  { name: "Mermelada de durazno", price: 70, category: "Mermeladas & Mieles" },
+  { name: "Mermelada de mango", price: 70, category: "Mermeladas & Mieles" },
+  { name: "Miel unicornio", price: 120, category: "Mermeladas & Mieles" },
+  { name: "Miel acahual", price: 140, category: "Mermeladas & Mieles" },
 
   // --------------------------
-  // 🌶️ CHILES Y ESPECIAS
+  // 🌶️ CHILES & ESPECIAS
   // --------------------------
-  { name: "Sal de gusano", price: 520, category: "Chiles y Especias" },
-  { name: "Sal de chapulín", price: 520, category: "Chiles y Especias" },
-  { name: "Chile chihuacle negro 1 kg", price: 1850, category: "Chiles y Especias" },
-  { name: "Chile pasilla mixe 1 kg", price: 350, category: "Chiles y Especias" },
-  { name: "Chile costeño rojo 1 kg", price: 250, category: "Chiles y Especias" },
-  { name: "Chile costeño amarillo 1 kg", price: 250, category: "Chiles y Especias" },
+  { name: "Sal de gusano", price: 520, category: "Chiles & Especias" },
+  { name: "Sal de chapulín", price: 520, category: "Chiles & Especias" },
+  { name: "Chile chihuacle negro 1 kg", price: 1850, category: "Chiles & Especias" },
+  { name: "Chile pasilla mixe 1 kg", price: 350, category: "Chiles & Especias" },
+  { name: "Chile costeño rojo 1 kg", price: 250, category: "Chiles & Especias" },
+  { name: "Chile costeño amarillo 1 kg", price: 250, category: "Chiles & Especias" },
 
   // --------------------------
   // 🍬 DULCES TRADICIONALES
