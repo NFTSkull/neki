@@ -16,22 +16,6 @@ const generateId = (name: string) => {
     .replace(/(^-|-$)/g, '');
 };
 
-// Función para obtener el color de acento de la categoría
-const getCategoryAccent = (category: string) => {
-  const accents: Record<string, string> = {
-    "Tlayudas": "from-orange-500/10 to-orange-600/5",
-    "Carnes y Quesos": "from-amber-600/10 to-amber-700/5",
-    "Moles": "from-amber-900/15 to-amber-950/10",
-    "Café y Chocolates": "from-green-600/10 to-green-700/5",
-    "Mermeladas & Mieles": "from-yellow-400/10 to-yellow-500/5",
-    "Chiles & Especias": "from-red-600/10 to-red-700/5",
-    "Dulces Tradicionales": "from-pink-400/10 to-pink-500/5",
-    "Otros": "from-emerald-500/10 to-emerald-600/5",
-    "Paquetes": "from-blue-500/10 to-blue-600/5"
-  };
-  return accents[category] || "from-gray-400/10 to-gray-500/5";
-};
-
 export default function ProductosPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
 
@@ -47,149 +31,172 @@ export default function ProductosPage() {
     return grouped;
   }, []);
 
-  // Filtrar productos según la categoría seleccionada
-  const filteredCategories = useMemo(() => {
+  // Obtener todos los productos filtrados
+  const filteredProducts = useMemo(() => {
     if (selectedCategory === 'Todos') {
-      return categories;
+      return products;
     }
-    return [selectedCategory];
+    return products.filter(p => p.category === selectedCategory);
   }, [selectedCategory]);
 
+  // Contar productos por categoría
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    categories.forEach(cat => {
+      counts[cat] = products.filter(p => p.category === cat).length;
+    });
+    return counts;
+  }, []);
+
   return (
-    <div className="min-h-screen bg-crema">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section - Moderno y elegante */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-br from-verde-oscuro via-verde-oscuro/95 to-verde-oscuro overflow-hidden">
-        {/* Patrón decorativo sutil */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(225, 155, 62, 0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-        
-        {/* Línea decorativa superior */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dorado/50 to-transparent"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            {/* Número decorativo */}
-            <div className="inline-block mb-6">
-              <span className="font-playfair text-6xl md:text-7xl text-dorado/20 font-bold">01</span>
-            </div>
-            
-            <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-crema mb-6 leading-tight">
+      {/* Header limpio y profesional */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-verde-oscuro mb-4 tracking-tight">
               Nuestros Productos
             </h1>
-            
-            <div className="w-24 h-0.5 bg-dorado mx-auto mb-8"></div>
-            
-            <p className="font-lato text-lg md:text-xl text-crema/90 max-w-2xl mx-auto leading-relaxed font-light">
-              Descubre nuestra colección completa de productos artesanales mexicanos, 
-              cuidadosamente seleccionados para ofrecerte los sabores auténticos de México.
+            <p className="font-lato text-base md:text-lg text-gray-600 leading-relaxed">
+              Productos artesanales mexicanos seleccionados con cuidado para ofrecerte sabores auténticos
             </p>
           </div>
         </div>
-        
-        {/* Línea decorativa inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dorado/30 to-transparent"></div>
       </section>
 
-      {/* Filtros de categoría - Diseño minimalista y elegante */}
-      <section className="sticky top-0 z-20 bg-crema/95 backdrop-blur-md border-b border-verde-oscuro/10 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap justify-center gap-3">
-            {['Todos', ...categories].map((categoria) => (
+      {/* Filtros de categoría - Diseño profesional */}
+      <section className="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-4">
+            {/* Filtros */}
+            <div className="flex flex-wrap gap-2 flex-1">
               <button
-                key={categoria}
-                onClick={() => setSelectedCategory(categoria)}
-                className={`relative px-6 py-2.5 rounded-full font-lato text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === categoria
-                    ? 'bg-verde-oscuro text-crema shadow-lg shadow-verde-oscuro/20'
-                    : 'bg-white/80 text-verde-oscuro hover:bg-verde-oscuro/5 border border-verde-oscuro/20 hover:border-verde-oscuro/40'
+                onClick={() => setSelectedCategory('Todos')}
+                className={`px-4 py-2 rounded-lg font-lato text-sm font-medium transition-all duration-200 ${
+                  selectedCategory === 'Todos'
+                    ? 'bg-verde-oscuro text-white shadow-sm'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
-                {categoria}
-                {selectedCategory === categoria && (
-                  <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-dorado rounded-full"></span>
-                )}
+                Todos
+                <span className="ml-2 text-xs opacity-75">({products.length})</span>
               </button>
-            ))}
+              {categories.map((categoria) => (
+                <button
+                  key={categoria}
+                  onClick={() => setSelectedCategory(categoria)}
+                  className={`px-4 py-2 rounded-lg font-lato text-sm font-medium transition-all duration-200 ${
+                    selectedCategory === categoria
+                      ? 'bg-verde-oscuro text-white shadow-sm'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {categoria}
+                  <span className="ml-2 text-xs opacity-75">({categoryCounts[categoria] || 0})</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Productos organizados por categoría - Diseño artístico */}
-      <section className="py-20 bg-crema">
+      {/* Grid de productos - Diseño profesional de ecommerce */}
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredCategories.map((category, categoryIndex) => {
-            const categoryProducts = productsByCategory[category] || [];
-            if (categoryProducts.length === 0) return null;
+          {/* Información de resultados */}
+          <div className="mb-8 flex items-center justify-between">
+            <p className="font-lato text-sm text-gray-600">
+              Mostrando <span className="font-semibold text-verde-oscuro">{filteredProducts.length}</span> {filteredProducts.length === 1 ? 'producto' : 'productos'}
+              {selectedCategory !== 'Todos' && (
+                <span className="ml-2">en <span className="font-semibold">{selectedCategory}</span></span>
+              )}
+            </p>
+          </div>
 
-            return (
-              <div 
-                key={category} 
-                className={`mb-24 last:mb-0 ${categoryIndex > 0 ? 'pt-16 border-t border-verde-oscuro/10' : ''}`}
-              >
-                {/* Header de categoría - Diseño sofisticado */}
-                <div className="relative mb-12">
-                  {/* Fondo sutil con gradiente */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${getCategoryAccent(category)} rounded-2xl -z-10`}></div>
-                  
-                  <div className="relative px-8 py-6">
-                    {/* Número de categoría */}
-                    <div className="flex items-center gap-6 mb-4">
-                      <span className="font-playfair text-4xl md:text-5xl text-verde-oscuro/20 font-bold">
-                        {(categoryIndex + 1).toString().padStart(2, '0')}
+          {/* Grid de productos - Layout profesional */}
+          {selectedCategory === 'Todos' ? (
+            // Vista por categorías cuando se selecciona "Todos"
+            <div className="space-y-16">
+              {categories.map((category) => {
+                const categoryProducts = productsByCategory[category] || [];
+                if (categoryProducts.length === 0) return null;
+
+                return (
+                  <div key={category} className="space-y-6">
+                    {/* Título de categoría minimalista */}
+                    <div className="flex items-center gap-4">
+                      <h2 className="font-playfair text-2xl md:text-3xl font-bold text-verde-oscuro">
+                        {category}
+                      </h2>
+                      <div className="flex-1 h-px bg-gray-200"></div>
+                      <span className="font-lato text-sm text-gray-500">
+                        {categoryProducts.length} {categoryProducts.length === 1 ? 'producto' : 'productos'}
                       </span>
-                      <div className="flex-1 h-px bg-gradient-to-r from-verde-oscuro/20 to-transparent"></div>
                     </div>
-                    
-                    {/* Título de categoría */}
-                    <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-verde-oscuro mb-2 tracking-tight">
-                      {category}
-                    </h2>
-                    
-                    {/* Subtítulo elegante */}
-                    <p className="font-lato text-sm text-verde-oscuro/60 uppercase tracking-wider font-medium">
-                      {categoryProducts.length} {categoryProducts.length === 1 ? 'producto disponible' : 'productos disponibles'}
-                    </p>
+
+                    {/* Grid de productos de la categoría */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                      {categoryProducts.map((product) => (
+                        <ProductoCard
+                          key={generateId(product.name)}
+                          id={generateId(product.name)}
+                          nombre={product.name}
+                          precio={product.price}
+                          categoria={product.category}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                );
+              })}
+            </div>
+          ) : (
+            // Vista de grid simple cuando se filtra por categoría
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+              {filteredProducts.map((product) => (
+                <ProductoCard
+                  key={generateId(product.name)}
+                  id={generateId(product.name)}
+                  nombre={product.name}
+                  precio={product.price}
+                  categoria={product.category}
+                />
+              ))}
+            </div>
+          )}
 
-                {/* Grid de productos - Espaciado elegante */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                  {categoryProducts.map((product) => (
-                    <ProductoCard
-                      key={generateId(product.name)}
-                      id={generateId(product.name)}
-                      nombre={product.name}
-                      precio={product.price}
-                      categoria={product.category}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+          {/* Sección de contacto */}
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-16">
+              <p className="font-lato text-lg text-gray-600 mb-6">
+                No se encontraron productos en esta categoría.
+              </p>
+              <button
+                onClick={() => setSelectedCategory('Todos')}
+                className="inline-flex items-center gap-2 bg-verde-oscuro hover:bg-verde-oscuro/90 text-white font-lato font-medium px-6 py-3 rounded-lg transition-all duration-200"
+              >
+                Ver todos los productos
+              </button>
+            </div>
+          )}
 
-          {/* Sección de contacto - Diseño minimalista */}
-          <div className="mt-32 pt-16 border-t-2 border-verde-oscuro/20">
+          {/* CTA final */}
+          <div className="mt-20 pt-12 border-t border-gray-200">
             <div className="text-center max-w-2xl mx-auto">
-              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-verde-oscuro mb-4">
+              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-verde-oscuro mb-3">
                 ¿Buscas algo especial?
               </h3>
-              <p className="font-lato text-lg text-verde-oscuro/70 mb-8 leading-relaxed">
-                Si no encuentras lo que buscas, estamos aquí para ayudarte. 
-                Contáctanos y crearemos una solución personalizada para ti.
+              <p className="font-lato text-base text-gray-600 mb-6 leading-relaxed">
+                Si no encuentras lo que buscas, contáctanos y crearemos una solución personalizada para ti.
               </p>
               <a
                 href="/contacto"
-                className="inline-flex items-center gap-3 bg-verde-oscuro hover:bg-verde-oscuro/90 text-crema font-lato font-medium px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-verde-oscuro/20 hover:shadow-xl hover:shadow-verde-oscuro/30 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-verde-oscuro hover:bg-verde-oscuro/90 text-white font-lato font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                <span>Contactar para pedido especial</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span>Contactar</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>

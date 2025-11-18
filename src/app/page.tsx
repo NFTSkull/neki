@@ -49,18 +49,24 @@ export default function Home() {
       <CategoriaSection />
 
       {/* Productos Destacados */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-verde-oscuro mb-4">
+          {/* Header mejorado */}
+          <div className="text-center mb-16">
+            <p className="font-lato text-sm text-dorado uppercase tracking-wider mb-3 font-medium">
+              Selección Especial
+            </p>
+            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-verde-oscuro mb-5 tracking-tight">
               Productos Destacados
             </h2>
-            <p className="font-lato text-lg text-gray-600 max-w-2xl mx-auto">
-              Descubre nuestros productos más populares, elaborados con técnicas tradicionales
+            <div className="w-20 h-0.5 bg-dorado mx-auto mb-6"></div>
+            <p className="font-lato text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Descubre nuestros productos más populares, elaborados con técnicas tradicionales que han pasado de generación en generación
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Grid de productos mejorado */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
             {productosDestacados.map((producto) => (
               <ProductoCard
                 key={generateId(producto.name)}

@@ -60,12 +60,16 @@ export default function CategoriaSection() {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Título de sección */}
-        <div className="text-center mb-12">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-verde-oscuro mb-4">
+        {/* Título de sección mejorado */}
+        <div className="text-center mb-16">
+          <p className="font-lato text-sm text-dorado uppercase tracking-wider mb-3 font-medium">
+            Nuestra Colección
+          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-verde-oscuro mb-5 tracking-tight">
             Categorías Destacadas
           </h2>
-          <p className="font-lato text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="w-20 h-0.5 bg-dorado mx-auto mb-6"></div>
+          <p className="font-lato text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Explora nuestra colección de productos artesanales organizados por categorías
           </p>
         </div>
@@ -81,27 +85,27 @@ export default function CategoriaSection() {
                 href={`/productos`}
                 className="group"
               >
-                <div className="bg-white rounded-lg overflow-hidden shadow-md card-hover border border-gray-100 h-full">
+                <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg card-hover border border-gray-200 h-full transition-all duration-300">
                   {/* Imagen de la categoría */}
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <div className={`w-full h-full ${getCategoryColor(categoria)} flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
+                  <div className="relative h-56 w-full overflow-hidden bg-gray-50">
+                    <div className={`w-full h-full ${getCategoryColor(categoria)} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}>
                       <div className="text-center text-white">
-                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-white/30">
-                          <span className="text-2xl font-bold font-playfair">
+                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-white/40 shadow-lg">
+                          <span className="text-3xl font-bold font-playfair">
                             {categoria.charAt(0)}
                           </span>
                         </div>
-                        <p className="text-sm font-medium opacity-90">{productCount} productos</p>
+                        <p className="text-sm font-semibold opacity-95 tracking-wide">{productCount} {productCount === 1 ? 'producto' : 'productos'}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Contenido */}
                   <div className="p-6">
-                    <h3 className="font-playfair text-xl font-semibold text-verde-oscuro mb-2 group-hover:text-dorado transition-smooth">
+                    <h3 className="font-playfair text-xl md:text-2xl font-bold text-verde-oscuro mb-3 group-hover:text-dorado transition-colors duration-300">
                       {categoria}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="font-lato text-sm text-gray-600 leading-relaxed">
                       {getCategoryDescription(categoria)}
                     </p>
                   </div>
