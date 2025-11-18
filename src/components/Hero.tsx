@@ -1,19 +1,57 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Precargar el video
+      video.load();
+      
+      // Manejar cuando el video está listo
+      const handleCanPlay = () => {
+        setIsVideoLoaded(true);
+        video.play().catch(() => {
+          // Silenciar errores de autoplay
+        });
+      };
+
+      video.addEventListener('canplaythrough', handleCanPlay);
+      
+      return () => {
+        video.removeEventListener('canplaythrough', handleCanPlay);
+      };
+    }
+  }, []);
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Video de fondo - Cubre toda la pantalla */}
       <div className="absolute inset-0 z-0">
+        {/* Fondo de respaldo mientras carga el video */}
+        <div className={`absolute inset-0 bg-gradient-to-br from-verde-oscuro via-verde-oscuro/95 to-verde-oscuro transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'}`}></div>
+        
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
+          style={{
+            opacity: isVideoLoaded ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out'
+          }}
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
+        
         {/* Overlay oscuro múltiple para máxima legibilidad */}
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-verde-oscuro/95 via-verde-oscuro/92 to-verde-oscuro/95"></div>

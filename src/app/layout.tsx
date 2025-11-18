@@ -37,6 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        {/* Preload del video hero para carga más rápida */}
+        <link rel="preload" href="/hero.mp4" as="video" type="video/mp4" />
+      </head>
       <body
         className={`${playfair.variable} ${libre.variable} ${poppins.variable} ${lato.variable} font-lato antialiased`}
       >
