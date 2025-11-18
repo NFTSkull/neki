@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
-      {/* Video de fondo */}
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* Video de fondo - Cubre toda la pantalla */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -26,22 +26,22 @@ export default function Hero() {
       {/* Contenido */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         {/* Subtítulo elegante */}
-        <p className="font-lato text-sm md:text-base text-dorado uppercase tracking-[0.2em] mb-6 font-medium drop-shadow-lg">
+        <p className="font-lato text-sm md:text-base text-white uppercase tracking-[0.2em] mb-6 font-medium drop-shadow-lg">
           Tradición Artesanal Mexicana
         </p>
         
         {/* Texto principal - Tipografía más auténtica */}
-        <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-crema mb-6 leading-[1.1] tracking-tight drop-shadow-2xl">
+        <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight drop-shadow-2xl">
           Sabores con{' '}
-          <span className="text-dorado italic drop-shadow-2xl">historia</span>
+          <span className="text-white italic drop-shadow-2xl">historia</span>
         </h1>
         
-        <p className="font-libre text-2xl md:text-3xl lg:text-4xl text-crema mb-8 max-w-3xl mx-auto leading-relaxed font-normal drop-shadow-xl">
+        <p className="font-libre text-2xl md:text-3xl lg:text-4xl text-white mb-8 max-w-3xl mx-auto leading-relaxed font-normal drop-shadow-xl">
           Productos con alma mexicana
         </p>
         
         {/* Descripción mejorada */}
-        <p className="font-lato text-base md:text-lg lg:text-xl text-crema/95 mb-12 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
+        <p className="font-lato text-base md:text-lg lg:text-xl text-white mb-12 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
           Descubre la tradición artesanal que conecta generaciones. 
           Moles, dulces, bebidas y utensilios de cocina que cuentan 
           la historia de México en cada sabor.
@@ -62,7 +62,7 @@ export default function Hero() {
           </Link>
           <Link
             href="/nosotros"
-            className="group border-2 border-crema/30 hover:border-crema text-crema hover:bg-crema/10 font-lato font-semibold px-8 py-4 rounded-lg transition-all duration-300 text-base md:text-lg backdrop-blur-sm"
+            className="group border-2 border-white/50 hover:border-white text-white hover:bg-white/10 font-lato font-semibold px-8 py-4 rounded-lg transition-all duration-300 text-base md:text-lg backdrop-blur-sm"
           >
             <span className="flex items-center gap-2">
               Conocer nuestra historia
@@ -75,7 +75,7 @@ export default function Hero() {
       </div>
 
       {/* Degradado inferior */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-crema to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-crema to-transparent z-10"></div>
     </section>
   );
 }
