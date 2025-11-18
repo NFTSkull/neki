@@ -145,6 +145,7 @@ export default function ProductosPage() {
                           nombre={product.name}
                           precio={product.price}
                           categoria={product.category}
+                          imagen={product.image}
                         />
                       ))}
                     </div>
@@ -162,6 +163,7 @@ export default function ProductosPage() {
                   nombre={product.name}
                   precio={product.price}
                   categoria={product.category}
+                  imagen={product.image}
                 />
               ))}
             </div>

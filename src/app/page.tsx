@@ -74,6 +74,7 @@ export default function Home() {
                 nombre={producto.name}
                 precio={producto.price}
                 categoria={producto.category}
+                imagen={producto.image}
               />
             ))}
           </div>

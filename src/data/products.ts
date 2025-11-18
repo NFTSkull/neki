@@ -10,7 +10,14 @@ export const categories = [
   "Paquetes"
 ];
 
-export const products = [
+export interface Product {
+  name: string;
+  price: number;
+  category: string;
+  image?: string;
+}
+
+export const products: Product[] = [
 
   // --------------------------
   // 🟧 TLAYUDAS
@@ -44,9 +51,9 @@ export const products = [
   // --------------------------
   { name: "Café Veracruz 500 g", price: 150, category: "Café y Chocolates" },
   { name: "Café Veracruz 250 g", price: 90, category: "Café y Chocolates" },
-  { name: "Chocolate Mayordomo 500 g", price: 145, category: "Café y Chocolates" },
+  { name: "Chocolate Mayordomo 500 g", price: 145, category: "Café y Chocolates", image: "/chocolate-mayordomo.png" },
   { name: "Chocolate en polvo La Soledad", price: 120, category: "Café y Chocolates" },
-  { name: "Bote Mayordomo 1.015 kg", price: 250, category: "Café y Chocolates" },
+  { name: "Bote Mayordomo 1.015 kg", price: 250, category: "Café y Chocolates", image: "/bote-mayordomo.png" },
   { name: "Barra Guelaguetza 500 g", price: 120, category: "Café y Chocolates" },
   { name: "Barra Guelaguetza 600 g", price: 135, category: "Café y Chocolates" },
 
@@ -110,4 +117,5 @@ export const products = [
   }
 
 ];
+
 

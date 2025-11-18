@@ -2,18 +2,25 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center bg-gradient-to-br from-verde-oscuro via-verde-oscuro/98 to-verde-oscuro overflow-hidden">
-      {/* Patrón decorativo sutil */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(225, 155, 62, 0.4) 1px, transparent 0)`,
-          backgroundSize: '50px 50px'
-        }}></div>
+    <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
+      {/* Video de fondo */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay oscuro para legibilidad del texto */}
+        <div className="absolute inset-0 bg-gradient-to-br from-verde-oscuro/85 via-verde-oscuro/80 to-verde-oscuro/85"></div>
       </div>
       
       {/* Líneas decorativas */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dorado/30 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dorado/20 to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dorado/30 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dorado/20 to-transparent z-10"></div>
       
       {/* Contenido */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
